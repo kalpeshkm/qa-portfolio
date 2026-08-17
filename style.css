@@ -1,0 +1,3069 @@
+/* ============================================================
+   QA PORTFOLIO
+   MAIN STYLESHEET
+============================================================ */
+
+
+/* ============================================================
+   ROOT VARIABLES
+============================================================ */
+
+:root {
+
+    --background: #050505;
+
+    --background-light: #0a0a0a;
+
+    --background-card: #0d0d0d;
+
+    --background-hover: #111111;
+
+    --border: #222222;
+
+    --border-light: #2b2b2b;
+
+    --text: #eeeeee;
+
+    --text-light: #c8c8c8;
+
+    --text-muted: #888888;
+
+    --text-dark: #555555;
+
+    --green: #00ff88;
+
+    --green-dark: #00c96a;
+
+    --green-transparent: rgba(0, 255, 136, 0.08);
+
+    --green-shadow: rgba(0, 255, 136, 0.20);
+
+    --red: #ff5f56;
+
+    --yellow: #ffbd2e;
+
+    --blue: #27c93f;
+
+    --container: 1180px;
+
+    --header-height: 76px;
+
+    --transition: 0.3s ease;
+
+}
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+    scroll-padding-top: 90px;
+
+}
+
+
+body {
+
+    background: var(--background);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+
+}
+
+
+/* ============================================================
+   BODY GRID BACKGROUND
+============================================================ */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    opacity: 0.04;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+}
+
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: #050505;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #333;
+
+    border-radius: 10px;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--green);
+
+}
+
+
+/* ============================================================
+   SELECTION
+============================================================ */
+
+::selection {
+
+    background: var(--green);
+
+    color: #000;
+
+}
+
+
+/* ============================================================
+   GENERAL
+============================================================ */
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+button {
+
+    font-family: inherit;
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+
+.container {
+
+    width: min(
+        calc(100% - 40px),
+        var(--container)
+    );
+
+    margin: 0 auto;
+
+}
+
+
+.section {
+
+    padding: 120px 0;
+
+    position: relative;
+
+}
+
+
+.section-dark {
+
+    background: #080808;
+
+    border-top: 1px solid #151515;
+
+    border-bottom: 1px solid #151515;
+
+}
+
+
+/* ============================================================
+   PAGE LOADER
+============================================================ */
+
+#pageLoader {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: #030303;
+
+    z-index: 99999;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: opacity 0.5s ease,
+                visibility 0.5s ease;
+
+}
+
+
+#pageLoader.hidden {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+.loader-content {
+
+    width: min(
+        calc(100% - 50px),
+        450px
+    );
+
+    text-align: center;
+
+}
+
+
+.loader-text {
+
+    font-family: "Fira Code", monospace;
+
+    color: var(--green);
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.loader-bar {
+
+    width: 100%;
+
+    height: 4px;
+
+    background: #222;
+
+    overflow: hidden;
+
+}
+
+
+.loader-progress {
+
+    width: 0;
+
+    height: 100%;
+
+    background: var(--green);
+
+    animation: loading 2s ease forwards;
+
+}
+
+
+.loader-status {
+
+    margin-top: 10px;
+
+    color: #555;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 11px;
+
+}
+
+
+@keyframes loading {
+
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   SCROLL PROGRESS
+============================================================ */
+
+#scrollProgress {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 0;
+
+    height: 3px;
+
+    background: var(--green);
+
+    z-index: 9999;
+
+    box-shadow:
+        0 0 10px var(--green-shadow);
+
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: var(--header-height);
+
+    z-index: 1000;
+
+    border-bottom: 1px solid transparent;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        backdrop-filter var(--transition);
+
+}
+
+
+header.scrolled {
+
+    background:
+        rgba(5, 5, 5, 0.88);
+
+    border-color: #202020;
+
+    backdrop-filter: blur(15px);
+
+}
+
+
+.navbar {
+
+    height: var(--header-height);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.logo {
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+}
+
+
+.logo-symbol {
+
+    color: #555;
+
+}
+
+
+.logo-highlight {
+
+    color: var(--green);
+
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    list-style: none;
+
+}
+
+
+.nav-links a {
+
+    color: #888;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    transition: var(--transition);
+
+}
+
+
+.nav-links a::before {
+
+    content: "./";
+
+    color: #333;
+
+}
+
+
+.nav-links a:hover,
+
+.nav-links a.active {
+
+    color: var(--green);
+
+}
+
+
+.nav-links a:hover::before,
+
+.nav-links a.active::before {
+
+    color: var(--green);
+
+}
+
+
+.menu-toggle {
+
+    display: none;
+
+    border: 0;
+
+    background: transparent;
+
+    width: 35px;
+
+    height: 35px;
+
+    cursor: pointer;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+}
+
+
+.menu-toggle span {
+
+    display: block;
+
+    width: 25px;
+
+    height: 2px;
+
+    background: var(--text);
+
+    transition: var(--transition);
+
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-top: 120px;
+
+    padding-bottom: 100px;
+
+}
+
+
+.hero-grid {
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+}
+
+
+.system-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 12px;
+
+    border: 1px solid #1f1f1f;
+
+    background: #080808;
+
+    color: var(--green);
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 11px;
+
+    margin-bottom: 25px;
+
+}
+
+.hero-image {
+    flex: 0 0 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image-container {
+    width: 360px;
+    height: 360px;
+
+    padding: 8px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+    box-shadow:
+        0 20px 50px rgba(37, 99, 235, 0.25);
+
+    transition: transform 0.3s ease;
+}
+
+.profile-image-container:hover {
+    transform: translateY(-8px);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 6px solid white;
+}
+
+.status-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    background: var(--green);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px var(--green);
+
+    animation: pulse 1.5s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        opacity: 1;
+
+    }
+
+    50% {
+
+        opacity: 0.3;
+
+    }
+
+}
+
+
+.status-cursor {
+
+    animation: cursorBlink 1s infinite;
+
+}
+
+
+@keyframes cursorBlink {
+
+    50% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+.hero-intro {
+
+    color: var(--text-muted);
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.hero-name {
+
+    font-family: "Fira Code", monospace;
+
+    font-size: clamp(
+        50px,
+        8vw,
+        90px
+    );
+
+    line-height: 1;
+
+    letter-spacing: -6px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.hero-name span {
+
+    color: var(--green);
+
+}
+
+
+.hero-role {
+
+    font-size: clamp(
+        20px,
+        3vw,
+        30px
+    );
+
+    font-weight: 500;
+
+    color: #aaa;
+
+    margin-bottom: 25px;
+
+}
+
+
+.role-separator {
+
+    color: var(--green);
+
+    margin: 0 8px;
+
+}
+
+
+.hero-description {
+
+    max-width: 650px;
+
+    color: #888;
+
+    font-size: 16px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.quick-info {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.quick-info-item {
+
+    border: 1px solid #202020;
+
+    background: #080808;
+
+    padding: 14px;
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    min-width: 0;
+
+}
+
+
+.info-icon {
+
+    color: var(--green);
+
+    font-size: 15px;
+
+}
+
+
+.quick-info-item small {
+
+    display: block;
+
+    color: #555;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 8px;
+
+    margin-bottom: 2px;
+
+}
+
+
+.quick-info-item strong {
+
+    display: block;
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+
+}
+
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 45px;
+
+    padding: 0 20px;
+
+    border: 1px solid #333;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 12px;
+
+    transition: var(--transition);
+
+}
+
+
+.btn-primary {
+
+    background: var(--green);
+
+    color: #000;
+
+    border-color: var(--green);
+
+}
+
+
+.btn-primary:hover {
+
+    background: transparent;
+
+    color: var(--green);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 30px var(--green-shadow);
+
+}
+
+
+.btn-secondary {
+
+    color: #aaa;
+
+    background: transparent;
+
+}
+
+
+.btn-secondary:hover {
+
+    color: var(--green);
+
+    border-color: var(--green);
+
+    transform: translateY(-3px);
+
+}
+
+
+.social-links {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.social-links a {
+
+    width: 38px;
+
+    height: 38px;
+
+    border: 1px solid #222;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #777;
+
+    transition: var(--transition);
+
+}
+
+
+.social-links a:hover {
+
+    color: var(--green);
+
+    border-color: var(--green);
+
+    transform: translateY(-3px);
+
+}
+
+
+/* ============================================================
+   TERMINAL
+============================================================ */
+
+.hero-terminal {
+
+    position: relative;
+
+}
+
+
+.hero-terminal::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -30px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,136,0.06),
+            transparent 65%
+        );
+
+    pointer-events: none;
+
+}
+
+
+.terminal-window {
+
+    position: relative;
+
+    background: #080808;
+
+    border: 1px solid #252525;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.5);
+
+}
+
+
+.terminal-header {
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 15px;
+
+    border-bottom: 1px solid #202020;
+
+}
+
+
+.terminal-controls {
+
+    display: flex;
+
+    gap: 7px;
+
+}
+
+
+.terminal-dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+}
+
+
+.terminal-dot.red {
+
+    background: var(--red);
+
+}
+
+
+.terminal-dot.yellow {
+
+    background: var(--yellow);
+
+}
+
+
+.terminal-dot.green {
+
+    background: var(--blue);
+
+}
+
+
+.terminal-title {
+
+    flex: 1;
+
+    text-align: center;
+
+    color: #555;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 10px;
+
+}
+
+
+.terminal-menu {
+
+    color: #444;
+
+}
+
+
+.terminal-body {
+
+    padding: 25px;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 12px;
+
+    line-height: 2;
+
+    min-height: 450px;
+
+}
+
+
+.terminal-line {
+
+    color: #aaa;
+
+    margin-bottom: 10px;
+
+}
+
+
+.terminal-prompt {
+
+    color: var(--green);
+
+}
+
+
+.terminal-path {
+
+    color: #555;
+
+}
+
+
+.terminal-output {
+
+    color: #777;
+
+    padding-left: 15px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.terminal-tag {
+
+    display: inline-block;
+
+    color: var(--green);
+
+    border: 1px solid #1c3a2c;
+
+    background: rgba(0,255,136,0.03);
+
+    padding: 1px 7px;
+
+    margin: 2px;
+
+    font-size: 10px;
+
+}
+
+
+.test-output p {
+
+    margin: 0;
+
+}
+
+
+.test-output p span {
+
+    color: var(--green);
+
+    margin-right: 7px;
+
+}
+
+
+.terminal-blink {
+
+    color: var(--green);
+
+    animation: cursorBlink 1s infinite;
+
+}
+
+
+/* ============================================================
+   SCROLL DOWN
+============================================================ */
+
+.scroll-down {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #444;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 9px;
+
+    transition: var(--transition);
+
+}
+
+
+.scroll-down:hover {
+
+    color: var(--green);
+
+}
+
+
+.scroll-down i {
+
+    animation:
+        scrollArrow 1.5s infinite;
+
+}
+
+
+@keyframes scrollArrow {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(5px);
+
+    }
+
+}
+
+
+/* ============================================================
+   SECTION HEADING
+============================================================ */
+
+.section-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    margin-bottom: 60px;
+
+}
+
+
+.section-number {
+
+    color: var(--green);
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 14px;
+
+    padding-top: 8px;
+
+}
+
+
+.section-label {
+
+    color: #555;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+
+}
+
+
+.section-heading h2 {
+
+    font-size: clamp(
+        35px,
+        5vw,
+        55px
+    );
+
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+
+}
+
+
+/* ============================================================
+   ABOUT
+============================================================ */
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+}
+
+
+.about-content p {
+
+    color: #888;
+
+    margin-bottom: 20px;
+
+    font-size: 15px;
+
+}
+
+
+.about-content .large-text {
+
+    color: #ccc;
+
+    font-size: 21px;
+
+    line-height: 1.6;
+
+}
+
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.stat-card {
+
+    padding: 30px 20px;
+
+    background: #090909;
+
+    border: 1px solid #202020;
+
+    text-align: center;
+
+    transition: var(--transition);
+
+}
+
+
+.stat-card:hover {
+
+    border-color: var(--green);
+
+    transform: translateY(-5px);
+
+}
+
+
+.stat-number {
+
+    color: var(--green);
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+}
+
+
+.stat-label {
+
+    color: #666;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    font-family: "Fira Code", monospace;
+
+}
+
+
+/* ============================================================
+   REVEAL ANIMATION
+============================================================ */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* ============================================================
+   TIMELINE
+============================================================ */
+
+.timeline {
+
+    position: relative;
+
+    max-width: 950px;
+
+    margin: auto;
+
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 7px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 1px;
+
+    background: #282828;
+
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    padding-left: 55px;
+
+    margin-bottom: 70px;
+
+}
+
+
+.timeline-item:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+.timeline-marker {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 6px;
+
+    width: 15px;
+
+    height: 15px;
+
+    background: #080808;
+
+    border: 1px solid var(--green);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.timeline-marker span {
+
+    width: 5px;
+
+    height: 5px;
+
+    background: var(--green);
+
+    border-radius: 50%;
+
+}
+
+
+.timeline-date {
+
+    color: var(--green);
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 11px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.timeline-content h3 {
+
+    font-size: 25px;
+
+    margin-bottom: 2px;
+
+}
+
+
+.timeline-content h4 {
+
+    color: #666;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    margin-bottom: 15px;
+
+}
+
+
+.timeline-content > p {
+
+    color: #888;
+
+    margin-bottom: 15px;
+
+}
+
+
+.timeline-content ul {
+
+    margin-left: 18px;
+
+    color: #777;
+
+    margin-bottom: 20px;
+
+}
+
+
+.timeline-content li {
+
+    padding-left: 5px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.tech-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+}
+
+
+.tech-tags span {
+
+    padding: 5px 9px;
+
+    border: 1px solid #252525;
+
+    color: #666;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 9px;
+
+}
+
+
+/* ============================================================
+   SKILLS
+============================================================ */
+
+.skills-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.skill-card {
+
+    padding: 28px;
+
+    background: #090909;
+
+    border: 1px solid #202020;
+
+    transition: var(--transition);
+
+}
+
+
+.skill-card:hover {
+
+    border-color: var(--green);
+
+    transform: translateY(-5px);
+
+    background: #0b0b0b;
+
+}
+
+
+.skill-icon {
+
+    color: var(--green);
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.skill-card h3 {
+
+    font-size: 17px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.skill-card p {
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+/* ============================================================
+   TOOLS
+============================================================ */
+
+.tools-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.tool-category {
+
+    padding: 25px;
+
+    background: #090909;
+
+    border: 1px solid #202020;
+
+}
+
+
+.tool-category h3 {
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 15px;
+
+    color: #ccc;
+
+    margin-bottom: 18px;
+
+}
+
+
+.tool-category h3 i {
+
+    color: var(--green);
+
+    margin-right: 8px;
+
+}
+
+
+.tool-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+}
+
+
+.tool-list span {
+
+    padding: 6px 10px;
+
+    border: 1px solid #292929;
+
+    background: #0b0b0b;
+
+    color: #777;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 10px;
+
+    transition: var(--transition);
+
+}
+
+
+.tool-list span:hover {
+
+    color: var(--green);
+
+    border-color: var(--green);
+
+}
+
+
+/* ============================================================
+   PROJECTS
+============================================================ */
+
+.projects-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.project-card {
+
+    position: relative;
+
+    min-height: 360px;
+
+    padding: 28px;
+
+    background: #090909;
+
+    border: 1px solid #202020;
+
+    transition: var(--transition);
+
+    overflow: hidden;
+
+}
+
+
+.project-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--green);
+
+    transition: 0.5s ease;
+
+}
+
+
+.project-card:hover::before {
+
+    width: 100%;
+
+}
+
+
+.project-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #333;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.3);
+
+}
+
+
+.project-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.project-number {
+
+    color: #333;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 12px;
+
+}
+
+
+.project-links a {
+
+    color: #555;
+
+    transition: var(--transition);
+
+}
+
+
+.project-links a:hover {
+
+    color: var(--green);
+
+}
+
+
+.project-icon {
+
+    color: var(--green);
+
+    font-size: 25px;
+
+    margin: 45px 0 20px;
+
+}
+
+
+.project-card h3 {
+
+    font-size: 20px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.project-card > p {
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+.project-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 25px;
+
+}
+
+
+.project-tags span {
+
+    color: #666;
+
+    border: 1px solid #252525;
+
+    padding: 5px 8px;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 9px;
+
+}
+
+
+/* ============================================================
+   DOMAINS
+============================================================ */
+
+.domain-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.domain-card {
+
+    min-height: 150px;
+
+    border: 1px solid #202020;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #777;
+
+    background: #090909;
+
+    transition: var(--transition);
+
+}
+
+
+.domain-card i {
+
+    color: var(--green);
+
+    font-size: 25px;
+
+}
+
+
+.domain-card span {
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 11px;
+
+}
+
+
+.domain-card:hover {
+
+    color: #ccc;
+
+    border-color: var(--green);
+
+    transform: translateY(-4px);
+
+}
+
+
+/* ============================================================
+   STRENGTHS
+============================================================ */
+
+.strength-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.strength-card {
+
+    position: relative;
+
+    padding: 30px;
+
+    border: 1px solid #202020;
+
+    background: #090909;
+
+}
+
+
+.strength-number {
+
+    display: block;
+
+    color: var(--green);
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 11px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.strength-card h3 {
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.strength-card p {
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+/* ============================================================
+   ACHIEVEMENTS
+============================================================ */
+
+.achievement-list {
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+
+.achievement-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 25px;
+
+    border-bottom: 1px solid #202020;
+
+}
+
+
+.achievement-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #244634;
+
+    color: var(--green);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.achievement-item h3 {
+
+    font-size: 16px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.achievement-item p {
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+/* ============================================================
+   CERTIFICATIONS
+============================================================ */
+
+.certification-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.certification-card {
+
+    display: flex;
+
+    gap: 18px;
+
+    padding: 25px;
+
+    border: 1px solid #202020;
+
+    background: #090909;
+
+}
+
+
+.certificate-icon {
+
+    color: var(--green);
+
+    font-size: 25px;
+
+}
+
+
+.certification-card h3 {
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.certification-card p {
+
+    color: #777;
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.certification-card span {
+
+    color: var(--green);
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 9px;
+
+}
+
+
+/* ============================================================
+   LANGUAGES
+============================================================ */
+
+.languages-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.language-card {
+
+    padding: 25px;
+
+    background: #090909;
+
+    border: 1px solid #202020;
+
+}
+
+
+.language-name {
+
+    font-size: 18px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.language-level {
+
+    color: #666;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 10px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.language-bar {
+
+    height: 3px;
+
+    background: #202020;
+
+}
+
+
+.language-bar span {
+
+    display: block;
+
+    height: 100%;
+
+    background: var(--green);
+
+}
+
+
+/* ============================================================
+   CONTACT
+============================================================ */
+
+.contact-section {
+
+    padding-bottom: 150px;
+
+}
+
+
+.contact-box {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    border: 1px solid #242424;
+
+    background: #080808;
+
+    overflow: hidden;
+
+}
+
+
+.contact-terminal {
+
+    padding: 12px 20px;
+
+    border-bottom: 1px solid #202020;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 10px;
+
+    color: #555;
+
+}
+
+
+.contact-terminal > span:first-child {
+
+    color: var(--green);
+
+}
+
+
+.contact-command {
+
+    margin-left: 10px;
+
+    color: #777;
+
+}
+
+
+.contact-content {
+
+    padding: 65px;
+
+}
+
+
+.contact-content h2 {
+
+    font-size: clamp(
+        35px,
+        6vw,
+        65px
+    );
+
+    line-height: 1.1;
+
+    letter-spacing: -3px;
+
+    max-width: 750px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.contact-content h2 span {
+
+    color: var(--green);
+
+}
+
+
+.contact-content > p {
+
+    max-width: 650px;
+
+    color: #777;
+
+    margin-bottom: 35px;
+
+}
+
+
+.contact-details {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.contact-detail {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    padding: 15px;
+
+    border: 1px solid #202020;
+
+    background: #0b0b0b;
+
+    transition: var(--transition);
+
+}
+
+
+.contact-detail:hover {
+
+    border-color: var(--green);
+
+}
+
+
+.contact-detail-icon {
+
+    color: var(--green);
+
+}
+
+
+.contact-detail small {
+
+    display: block;
+
+    color: #444;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 8px;
+
+}
+
+
+.contact-detail strong {
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+}
+
+
+.contact-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.contact-social {
+
+    display: flex;
+
+    gap: 20px;
+
+}
+
+
+.contact-social a {
+
+    color: #666;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 11px;
+
+    transition: var(--transition);
+
+}
+
+
+.contact-social a:hover {
+
+    color: var(--green);
+
+}
+
+
+.contact-social i {
+
+    margin-right: 5px;
+
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer {
+
+    border-top: 1px solid #181818;
+
+    padding: 30px 0;
+
+    background: #030303;
+
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+.footer-logo {
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 13px;
+
+}
+
+
+.footer-logo span {
+
+    color: var(--green);
+
+}
+
+
+.footer-content p {
+
+    color: #444;
+
+    font-family: "Fira Code", monospace;
+
+    font-size: 9px;
+
+}
+
+
+/* ============================================================
+   BACK TO TOP
+============================================================ */
+
+#backToTop {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: 1px solid var(--green);
+
+    background: #050505;
+
+    color: var(--green);
+
+    cursor: pointer;
+
+    z-index: 999;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(10px);
+
+    transition: var(--transition);
+
+}
+
+
+#backToTop.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+}
+
+
+#backToTop:hover {
+
+    background: var(--green);
+
+    color: #000;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - TABLET
+============================================================ */
+
+@media(max-width: 1000px) {
+
+    .hero-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+    }
+
+
+    .hero-terminal {
+
+        max-width: 700px;
+
+    }
+
+
+    .skills-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .projects-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .certification-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .about-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+============================================================ */
+
+@media(max-width: 750px) {
+
+    :root {
+
+        --header-height: 68px;
+
+    }
+
+
+    .container {
+
+        width:
+            min(
+                calc(100% - 30px),
+                var(--container)
+            );
+
+    }
+
+
+    .section {
+
+        padding: 80px 0;
+
+    }
+
+
+    /* NAV */
+
+    .nav-links {
+
+        position: absolute;
+
+        top: var(--header-height);
+
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 0;
+
+        background: #070707;
+
+        border-bottom: 1px solid #222;
+
+        padding: 10px 20px;
+
+    }
+
+
+    .nav-links.open {
+
+        display: flex;
+
+    }
+
+
+    .nav-links li {
+
+        width: 100%;
+
+    }
+
+
+    .nav-links a {
+
+        display: block;
+
+        width: 100%;
+
+        padding: 13px 0;
+
+    }
+
+
+    .menu-toggle {
+
+        display: flex;
+
+    }
+
+
+    .menu-toggle.open span:nth-child(1) {
+
+        transform:
+            translateY(7px)
+            rotate(45deg);
+
+    }
+
+
+    .menu-toggle.open span:nth-child(2) {
+
+        opacity: 0;
+
+    }
+
+
+    .menu-toggle.open span:nth-child(3) {
+
+        transform:
+            translateY(-7px)
+            rotate(-45deg);
+
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        padding-top: 100px;
+
+    }
+
+
+    .hero-name {
+
+        font-size: 52px;
+
+        letter-spacing: -4px;
+
+    }
+
+
+    .hero-role {
+
+        font-size: 20px;
+
+    }
+
+
+    .quick-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .btn {
+
+        width: 100%;
+
+    }
+
+
+    .hero-terminal {
+
+        width: 100%;
+
+    }
+
+
+    .terminal-body {
+
+        font-size: 10px;
+
+        min-height: 400px;
+
+        padding: 18px;
+
+        overflow-x: auto;
+
+    }
+
+
+    .scroll-down {
+
+        display: none;
+
+    }
+
+
+    /* HEADINGS */
+
+    .section-heading {
+
+        gap: 15px;
+
+        margin-bottom: 40px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 35px;
+
+    }
+
+
+    /* SKILLS */
+
+    .skills-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* PROJECTS */
+
+    .projects-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* TOOLS */
+
+    .tools-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* DOMAINS */
+
+    .domain-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    /* STRENGTHS */
+
+    .strength-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* CERTIFICATIONS */
+
+    .certification-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* LANGUAGES */
+
+    .languages-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* CONTACT */
+
+    .contact-content {
+
+        padding: 35px 25px;
+
+    }
+
+
+    .contact-content h2 {
+
+        font-size: 40px;
+
+        letter-spacing: -2px;
+
+    }
+
+
+    .contact-details {
+
+        flex-direction: column;
+
+    }
+
+
+    .contact-detail {
+
+        width: 100%;
+
+    }
+
+
+    /* FOOTER */
+
+    .footer-content {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL DEVICES
+============================================================ */
+
+@media(max-width: 420px) {
+
+    .hero-name {
+
+        font-size: 44px;
+
+    }
+
+
+    .domain-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .stats-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .project-card {
+
+        min-height: auto;
+
+    }
+
+
+    .contact-content h2 {
+
+        font-size: 34px;
+
+    }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media(prefers-reduced-motion: reduce) {
+
+    * {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
