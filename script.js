@@ -4,16 +4,12 @@
 ============================================================ */
 
 
-/* ============================================================
-   WAIT FOR DOM
-============================================================ */
+/* ===================================== WAIT FOR DOM ====================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
 
-    /* ========================================================
-       PAGE LOADER
-    ======================================================== */
+    /* ============================== PAGE LOADER ============================== */
 
     const pageLoader =
         document.getElementById("pageLoader");
@@ -64,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       MOBILE MENU
-    ======================================================== */
+    /* ============================== MOBILE MENU ============================== */
 
     const menuToggle =
         document.getElementById("menuToggle");
@@ -117,9 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       SCROLL PROGRESS
-    ======================================================== */
+    /* ============================== SCROLL PROGRESS ============================== */
 
     const scrollProgress =
         document.getElementById(
@@ -170,9 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       SCROLL REVEAL
-    ======================================================== */
+    /* ============================== SCROLL REVEAL ============================== */
 
     const revealElements =
         document.querySelectorAll(
@@ -224,9 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       ACTIVE NAVIGATION
-    ======================================================== */
+    /* ======================== ACTIVE NAVIGATION ========================== */
 
     const sections =
         document.querySelectorAll(
@@ -316,9 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       BACK TO TOP
-    ======================================================== */
+    /* ================================= BACK TO TOP ========================= */
 
     const backToTop =
         document.getElementById(
@@ -368,9 +354,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       CURRENT YEAR
-    ======================================================== */
+    /* =============================== CURRENT YEAR ========================== */
 
     const currentYear =
         document.getElementById(
@@ -477,9 +461,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       TERMINAL COMMAND EFFECT
-    ======================================================== */
+    /* =============================== TERMINAL COMMAND EFFECT ========================== */
 
     const terminal =
         document.querySelector(
@@ -514,9 +496,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       SMOOTH SCROLL
-    ======================================================== */
+    /* ============================== SMOOTH SCROLL ====================== */
 
     document.querySelectorAll(
         'a[href^="#"]'
@@ -573,9 +553,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       SKILL CARD TILT EFFECT
-    ======================================================== */
+    /* ======================== SKILL CARD TILT EFFECT ============================ */
 
     const cards =
         document.querySelectorAll(
@@ -661,9 +639,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* ========================================================
-       CONSOLE MESSAGE
-    ======================================================== */
+    /* ===========================  CONSOLE MESSAGE ======================== */
 
     console.log(
         "%c QA PORTFOLIO ",
@@ -680,6 +656,667 @@ document.addEventListener("DOMContentLoaded", function () {
         "Testing status: READY"
     );
 
+});
 
+// =========================================
+// CHATBOT
+// =========================================
+
+
+// Get Elements
+
+const chatbotToggle = document.getElementById("chatbot-toggle");
+
+const chatbot = document.getElementById("chatbot");
+
+const closeChatbot = document.getElementById("close-chatbot");
+
+const userInput = document.getElementById("user-input");
+
+const sendButton = document.getElementById("send-button");
+
+const chatMessages = document.getElementById("chat-messages");
+
+
+// Open Chatbot
+
+chatbotToggle.addEventListener("click", function () {
+
+    chatbot.classList.toggle("active");
 
 });
+
+
+// Close Chatbot
+
+closeChatbot.addEventListener("click", function () {
+
+    chatbot.classList.remove("active");
+
+});
+
+
+// Send Button
+
+sendButton.addEventListener("click", sendMessage);
+
+
+// Enter Key
+
+userInput.addEventListener("keypress", function (event) {
+
+    if (event.key === "Enter") {
+
+        sendMessage();
+
+    }
+
+});
+
+
+// Send Message
+
+function sendMessage() {
+
+    const message = userInput.value.trim();
+
+    if (message === "") {
+
+        return;
+
+    }
+
+
+    // Add User Message
+
+    addMessage(message, "user-message");
+
+
+    // Clear Input
+
+    userInput.value = "";
+
+
+    // Bot Typing Effect
+
+    setTimeout(function () {
+
+        const response = getBotResponse(message);
+
+        addMessage(response, "bot-message");
+
+    }, 500);
+
+}
+
+
+// Add Message Function
+
+function addMessage(message, className) {
+
+    const messageDiv = document.createElement("div");
+
+    messageDiv.classList.add("message");
+
+    messageDiv.classList.add(className);
+
+    messageDiv.innerHTML = message;
+
+    chatMessages.appendChild(messageDiv);
+
+
+    // Scroll to Latest Message
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+}
+
+
+// Suggested Question Function
+
+function askQuestion(question) {
+
+    userInput.value = question;
+
+    sendMessage();
+
+}
+
+
+// BOT KNOWLEDGE BASE
+
+function getBotResponse(message) {
+
+    const question = message.toLowerCase();
+
+
+    // ABOUT
+
+    if (
+        question.includes("about") ||
+        question.includes("who is kalpesh") ||
+        question.includes("tell me about kalpesh") ||
+        question.includes("introduce")
+    ) {
+
+        return `
+        👨‍💻 <strong>Kalpesh Mali</strong> is a QA Engineer and Software Tester with 3+ years of experience in Manual and Automation Testing.
+
+        <br><br>
+
+        His main expertise includes Selenium, Java, Playwright, API Testing, Functional Testing and Regression Testing.
+        `;
+
+    }
+
+
+    // EXPERIENCE
+
+    else if (
+        question.includes("experience") ||
+        question.includes("work experience") ||
+        question.includes("career") ||
+        question.includes("company")
+    ) {
+
+        return `
+        💼 Kalpesh has <strong>3+ years of QA experience</strong>.
+
+        <br><br>
+
+        He has worked as:
+
+        <br><br>
+
+        🔹 Sr. QA Analyst – Direct Leadz
+
+        <br>
+
+        🔹 QA Engineer – Vitech Solutions
+
+        <br>
+
+        🔹 Jr. QA Engineer – DUIUX Infotech
+
+        <br><br>
+
+        His work includes Manual Testing, Automation Testing, API Testing, Regression Testing and Defect Management.
+        `;
+
+    }
+
+
+    // SKILLS
+
+    else if (
+        question.includes("skill") ||
+        question.includes("technology") ||
+        question.includes("tools")
+    ) {
+
+        return `
+        🛠️ <strong>Technical Skills:</strong>
+
+        <br><br>
+
+        💻 Languages:
+        Java, Python, SQL, JavaScript
+
+        <br><br>
+
+        🤖 Automation:
+        Selenium, Playwright, TestNG, JUnit, Maven
+
+        <br><br>
+
+        🔗 API:
+        Postman, REST API, JSON
+
+        <br><br>
+
+        🧰 Tools:
+        Jira, Git, GitHub, TestRail, Jenkins, VS Code
+        `;
+
+    }
+
+
+    // SELENIUM
+
+    else if (question.includes("selenium")) {
+
+        return `
+        🤖 Yes! Kalpesh has experience using <strong>Selenium with Java</strong> for automation testing.
+
+        <br><br>
+
+        He works with automation frameworks and tools such as:
+
+        <br>
+
+        • Selenium WebDriver
+
+        <br>
+
+        • Java
+
+        <br>
+
+        • TestNG
+
+        <br>
+
+        • Maven
+
+        <br>
+
+        • Page Object Model
+
+        <br>
+
+        • Git & GitHub
+        `;
+
+    }
+
+
+    // PLAYWRIGHT
+
+    else if (question.includes("playwright")) {
+
+        return `
+        🎭 Yes! Kalpesh also works with <strong>Playwright</strong> for automation testing.
+
+        <br><br>
+
+        Playwright is used for modern web automation, browser testing and end-to-end testing.
+        `;
+
+    }
+
+
+    // API
+
+    else if (
+        question.includes("api") ||
+        question.includes("postman") ||
+        question.includes("rest")
+    ) {
+
+        return `
+        🔗 Kalpesh has experience in <strong>API Testing</strong>.
+
+        <br><br>
+
+        He uses Postman for:
+
+        <br>
+
+        • Sending API requests
+
+        <br>
+
+        • Validating status codes
+
+        <br>
+
+        • Validating JSON responses
+
+        <br>
+
+        • Testing REST APIs
+
+        <br>
+
+        • Checking request and response data
+        `;
+
+    }
+
+
+    // PROJECTS
+
+    else if (
+        question.includes("project") ||
+        question.includes("portfolio work")
+    ) {
+
+        return `
+        🚀 <strong>Featured Projects:</strong>
+
+        <br><br>
+
+        1️⃣ Djobzy
+
+        <br>
+
+        Online job marketplace testing involving Manual Testing, Automation Testing, Selenium, Regression and API Testing.
+
+        <br><br>
+
+        2️⃣ SSENSE E-Commerce Website
+
+        <br>
+
+        QA testing involving Manual Testing, Automation Testing, Selenium, TestNG and Maven.
+
+        <br><br>
+
+        3️⃣ Mobile Application Testing
+
+        <br>
+
+        Functional and UI testing across multiple devices and screen sizes.
+        `;
+
+    }
+
+
+    // EDUCATION
+
+    else if (
+        question.includes("education") ||
+        question.includes("degree") ||
+        question.includes("college") ||
+        question.includes("mca") ||
+        question.includes("bca")
+    ) {
+
+        return `
+        🎓 <strong>Education:</strong>
+
+        <br><br>
+
+        🎓 MCA – G T Patil College, Nandurbar
+
+        <br>
+
+        CGPA: 7.22/10
+
+        <br><br>
+
+        🎓 BCA – R C Patel ACS College, Shirpur
+
+        <br>
+
+        CGPA: 8.64/10
+        `;
+
+    }
+
+
+    // CERTIFICATIONS
+
+    else if (
+        question.includes("certification") ||
+        question.includes("certificate") ||
+        question.includes("istqb") ||
+        question.includes("aws")
+    ) {
+
+        return `
+        🏆 <strong>Certifications:</strong>
+
+        <br><br>
+
+        ✔ ISTQB Foundation Level
+
+        <br>
+
+        ✔ AWS Solutions Architect – Associate
+
+        <br>
+
+        ✔ Introduction to Python Programming
+        `;
+
+    }
+
+
+    // LANGUAGES
+
+    else if (
+        question.includes("language") ||
+        question.includes("english") ||
+        question.includes("hindi") ||
+        question.includes("marathi")
+    ) {
+
+        return `
+        🌍 Kalpesh can communicate in:
+
+        <br><br>
+
+        🇬🇧 English – Professional
+
+        <br>
+
+        🇮🇳 Hindi – Fluent
+
+        <br>
+
+        🇮🇳 Marathi – Native
+        `;
+
+    }
+
+
+    // CONTACT
+
+    else if (
+        question.includes("contact") ||
+        question.includes("email") ||
+        question.includes("phone") ||
+        question.includes("reach")
+    ) {
+
+        return `
+        📩 <strong>You can contact Kalpesh here:</strong>
+
+        <br><br>
+
+        📧 Email: kalpeshkmali@gmail.com
+
+        <br>
+
+        📱 Phone: +91 7378809216
+
+        <br><br>
+
+        Feel free to connect regarding QA, Automation Testing or job opportunities!
+        `;
+
+    }
+
+
+    // HIRE
+
+    else if (
+        question.includes("hire") ||
+        question.includes("why should we hire") ||
+        question.includes("why hire")
+    ) {
+
+        return `
+        ⭐ Kalpesh brings a combination of:
+
+        <br><br>
+
+        ✔ 3+ years of QA experience
+
+        <br>
+
+        ✔ Manual & Automation Testing
+
+        <br>
+
+        ✔ Selenium & Playwright
+
+        <br>
+
+        ✔ Java & Python
+
+        <br>
+
+        ✔ API Testing
+
+        <br>
+
+        ✔ Jira & Defect Management
+
+        <br>
+
+        ✔ Strong understanding of SDLC and STLC
+
+        <br><br>
+
+        He focuses on identifying issues early and helping teams deliver stable, high-quality software.
+        `;
+
+    }
+
+
+    // MANUAL TESTING
+
+    else if (
+        question.includes("manual testing") ||
+        question.includes("functional testing") ||
+        question.includes("regression")
+    ) {
+
+        return `
+        🧪 Kalpesh has strong experience in Manual Testing.
+
+        <br><br>
+
+        His testing experience includes:
+
+        <br>
+
+        ✔ Functional Testing
+
+        <br>
+
+        ✔ Regression Testing
+
+        <br>
+
+        ✔ Smoke Testing
+
+        <br>
+
+        ✔ Sanity Testing
+
+        <br>
+
+        ✔ Integration Testing
+
+        <br>
+
+        ✔ End-to-End Testing
+
+        <br>
+
+        ✔ UI Testing
+        `;
+
+    }
+
+
+    // GREETING
+
+    else if (
+        question.includes("hello") ||
+        question.includes("hi") ||
+        question.includes("hey")
+    ) {
+
+        return `
+        👋 Hello!
+
+        <br><br>
+
+        I'm Kalpesh's Portfolio Assistant.
+
+        You can ask me about his:
+
+        <br><br>
+
+        💼 Experience
+
+        <br>
+
+        🛠️ Skills
+
+        <br>
+
+        🚀 Projects
+
+        <br>
+
+        🎓 Education
+
+        <br>
+
+        🏆 Certifications
+
+        <br>
+
+        📩 Contact Information
+        `;
+
+    }
+
+
+    // DEFAULT RESPONSE
+
+    else {
+
+        return `
+        🤔 I don't have a specific answer for that yet.
+
+        <br><br>
+
+        You can ask me about:
+
+        <br>
+
+        • Kalpesh's Experience
+
+        <br>
+
+        • Technical Skills
+
+        <br>
+
+        • Selenium
+
+        <br>
+
+        • Playwright
+
+        <br>
+
+        • API Testing
+
+        <br>
+
+        • Projects
+
+        <br>
+
+        • Education
+
+        <br>
+
+        • Certifications
+
+        <br>
+
+        • Contact Information
+        `;
+
+    }
+
+}
+

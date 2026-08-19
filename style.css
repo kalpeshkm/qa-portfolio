@@ -4,9 +4,7 @@
 ============================================================ */
 
 
-/* ============================================================
-   ROOT VARIABLES
-============================================================ */
+/* ========================= ROOT VARIABLES ============================== */
 
 :root {
 
@@ -53,9 +51,7 @@
 }
 
 
-/* ============================================================
-   RESET
-============================================================ */
+/* ============================= RESET ============================ */
 
 * {
 
@@ -92,9 +88,7 @@ body {
 }
 
 
-/* ============================================================
-   BODY GRID BACKGROUND
-============================================================ */
+/* ========================= BODY GRID BACKGROUND ============================== */
 
 body::before {
 
@@ -128,9 +122,7 @@ body::before {
 }
 
 
-/* ============================================================
-   SCROLLBAR
-============================================================ */
+/* ========================== SCROLLBAR ============================ */
 
 ::-webkit-scrollbar {
 
@@ -162,9 +154,7 @@ body::before {
 }
 
 
-/* ============================================================
-   SELECTION
-============================================================ */
+/* ============================ SELECTION ============================ */
 
 ::selection {
 
@@ -236,9 +226,7 @@ img {
 }
 
 
-/* ============================================================
-   PAGE LOADER
-============================================================ */
+/* =========================== PAGE LOADER =========================== */
 
 #pageLoader {
 
@@ -348,9 +336,7 @@ img {
 }
 
 
-/* ============================================================
-   SCROLL PROGRESS
-============================================================ */
+/* ======================== SCROLL PROGRESS ============================= */
 
 #scrollProgress {
 
@@ -374,9 +360,7 @@ img {
 }
 
 
-/* ============================================================
-   HEADER
-============================================================ */
+/* ========================== HEADER ============================= */
 
 header {
 
@@ -547,9 +531,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   HERO
-============================================================ */
+/* ======================== HERO ========================== */
 
 .hero {
 
@@ -978,9 +960,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   TERMINAL
-============================================================ */
+/* ============================== TERMINAL ============================== */
 
 .hero-terminal {
 
@@ -1195,9 +1175,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   SCROLL DOWN
-============================================================ */
+/* ========================= SCROLL DOWN ========================= */
 
 .scroll-down {
 
@@ -1261,9 +1239,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   SECTION HEADING
-============================================================ */
+/* =========================== SECTION HEADING ========================== */
 
 .section-heading {
 
@@ -1321,9 +1297,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   ABOUT
-============================================================ */
+/* ========================== ABOUT ========================== */
 
 .about-grid {
 
@@ -1423,9 +1397,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   REVEAL ANIMATION
-============================================================ */
+/* ========================== REVEAL ANIMATION ========================== */
 
 .reveal {
 
@@ -1449,9 +1421,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   TIMELINE
-============================================================ */
+/* ========================== TIMELINE ========================== */
 
 .timeline {
 
@@ -1631,9 +1601,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   SKILLS
-============================================================ */
+/* ========================== SKILLS ========================== */
 
 .skills-grid {
 
@@ -1700,9 +1668,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   TOOLS
-============================================================ */
+/* ========================== TOOLS ========================== */
 
 .tools-container {
 
@@ -1788,9 +1754,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   PROJECTS
-============================================================ */
+/* ========================== PROJECTS ========================== */
 
 .projects-grid {
 
@@ -1958,9 +1922,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   DOMAINS
-============================================================ */
+/* ========================== DOMAINS ========================== */
 
 .domain-grid {
 
@@ -2028,9 +1990,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   STRENGTHS
-============================================================ */
+/* ========================== STRENGTHS ========================== */
 
 .strength-grid {
 
@@ -2090,9 +2050,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   ACHIEVEMENTS
-============================================================ */
+/* ========================== ACHIEVEMENTS ========================== */
 
 .achievement-list {
 
@@ -2157,9 +2115,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   CERTIFICATIONS
-============================================================ */
+/* ========================== CERTIFICATIONS ========================== */
 
 .certification-grid {
 
@@ -2228,9 +2184,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   LANGUAGES
-============================================================ */
+/* =========================== LANGUAGES ========================= */
 
 .languages-grid {
 
@@ -2297,9 +2251,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   CONTACT
-============================================================ */
+/* ========================== CONTACT ========================== */
 
 .contact-section {
 
@@ -2517,9 +2469,7 @@ header.scrolled {
 }
 
 
-/* ============================================================
-   FOOTER
-============================================================ */
+/* ========================= FOOTER ======================== */
 
 footer {
 
@@ -2572,13 +2522,111 @@ footer {
 }
 
 
-/* ============================================================
-   BACK TO TOP
-============================================================ */
+/* =========================== RESPONSIVE - MOBILE ============================ */
 
-#backToTop {
+@media(max-width: 750px) {
 
-    position: fixed;
+    :root {
+
+        --header-height: 68px;
+
+    }
+
+
+    .container {
+
+        width:
+            min(
+                calc(100% - 30px),
+                var(--container)
+            );
+
+    }
+
+
+    .section {
+
+        padding: 80px 0;
+
+    }
+
+
+    /* NAV */
+
+    .nav-links {
+
+        position: absolute;
+
+        top: var(--header-height);
+
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 0;
+
+        background: #070707;
+
+        border-bottom: 1px solid #222;
+
+        padding: 10px 20px;
+
+    }
+
+
+    .nav-links.open {
+
+        display: flex;
+
+    }
+
+
+    .nav-links li {
+
+        width: 100%;
+
+    }
+
+
+    .nav-links a {
+
+        display: block;
+
+        width: 100%;
+
+        padding: 13px 0;
+
+    }
+
+
+    .menu-toggle {
+
+        display: flex;
+
+    }
+
+
+    .menu-toggle.open span:nth-child(1) {
+
+        transform:
+            translateY(7px)
+            rotate(45deg);
+
+    }
+
+
+    .menu-toggle.open span:nth-child(2) {
+
+        opacity: 0;
+
+    }
+
 
     right: 25px;
 
@@ -2629,9 +2677,7 @@ footer {
 }
 
 
-/* ============================================================
-   RESPONSIVE - TABLET
-============================================================ */
+/* =========================== RESPONSIVE - TABLET ============================ */
 
 @media(max-width: 1000px) {
 
@@ -2686,9 +2732,7 @@ footer {
 }
 
 
-/* ============================================================
-   RESPONSIVE - MOBILE
-============================================================ */
+/* ====================================== RESPONSIVE - MOBILE ================== */
 
 @media(max-width: 750px) {
 
@@ -3005,9 +3049,7 @@ footer {
 }
 
 
-/* ============================================================
-   VERY SMALL DEVICES
-============================================================ */
+    /* ============================== VERY SMALL DEVICES ============================== */
 
 @media(max-width: 420px) {
 
@@ -3048,9 +3090,7 @@ footer {
 }
 
 
-/* ============================================================
-   REDUCED MOTION
-============================================================ */
+/* ============================ REDUCED MOTION =============================== */
 
 @media(prefers-reduced-motion: reduce) {
 
@@ -3064,6 +3104,282 @@ footer {
 
         transition-duration: 0.01ms !important;
 
+    }
+}
+
+/* ====================== CHATBOT STYLING ================== */
+
+.chatbot-container {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 9999;
+}
+
+/* Floating Button */
+
+.chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    font-size: 28px;
+
+    background: #00ff88;
+    color: #000;
+
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+
+    transition: 0.3s;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Chat Window */
+
+.chatbot {
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 75px;
+
+    width: 360px;
+    height: 500px;
+
+    background: #0d1117;
+
+    border: 1px solid #00ff88;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 25px rgba(0, 255, 136, 0.3);
+
+    flex-direction: column;
+}
+
+/* Active Chat */
+
+.chatbot.active {
+    display: flex;
+}
+
+/* Header */
+
+.chatbot-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px;
+
+    background: #161b22;
+
+    border-bottom: 1px solid #00ff88;
+}
+
+.chatbot-header h3 {
+
+    margin: 0;
+
+    color: #00ff88;
+
+    font-size: 16px;
+}
+
+.chatbot-header span {
+
+    font-size: 12px;
+
+    color: #00ff88;
+}
+
+/* Close Button */
+
+.close-chatbot {
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+/* Messages */
+
+.chat-messages {
+
+    flex: 1;
+
+    padding: 15px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+/* Message */
+
+.message {
+
+    max-width: 80%;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+/* Bot Message */
+
+.bot-message {
+
+    background: #161b22;
+
+    color: white;
+
+    align-self: flex-start;
+
+    border: 1px solid #30363d;
+}
+
+/* User Message */
+
+.user-message {
+
+    background: #00ff88;
+
+    color: #000;
+
+    align-self: flex-end;
+}
+
+/* Suggested Questions */
+
+.suggested-questions {
+
+    padding: 10px;
+
+    display: flex;
+
+    gap: 5px;
+
+    flex-wrap: wrap;
+
+    border-top: 1px solid #30363d;
+}
+
+.suggested-questions button {
+
+    background: transparent;
+
+    border: 1px solid #00ff88;
+
+    color: #00ff88;
+
+    padding: 5px 8px;
+
+    border-radius: 15px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.suggested-questions button:hover {
+
+    background: #00ff88;
+
+    color: black;
+}
+
+/* Input */
+
+.chat-input-container {
+
+    display: flex;
+
+    padding: 10px;
+
+    border-top: 1px solid #30363d;
+}
+
+#user-input {
+
+    flex: 1;
+
+    background: #0d1117;
+
+    border: 1px solid #30363d;
+
+    color: white;
+
+    padding: 10px;
+
+    outline: none;
+
+    border-radius: 5px;
+}
+
+#user-input:focus {
+
+    border-color: #00ff88;
+}
+
+#send-button {
+
+    margin-left: 8px;
+
+    border: none;
+
+    background: #00ff88;
+
+    color: black;
+
+    padding: 10px 15px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .chatbot {
+
+        width: 90vw;
+
+        height: 70vh;
+
+        right: 0;
     }
 
 }

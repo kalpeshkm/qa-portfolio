@@ -3,9 +3,7 @@
 
 <head>
 
-    <!-- ================================
-         BASIC META INFORMATION
-    ================================= -->
+    <!-- ================== BASIC META INFORMATION =============== -->
 
     <meta charset="UTF-8">
 
@@ -24,18 +22,14 @@
     <title>KALPESH MALI | QA Engineer & Software Tester</title>
 
 
-    <!-- ================================
-         FAVICON
-    ================================= -->
+    <!-- =================== FAVICON ============== -->
 
     <link rel="icon"
           type="image/png"
           href="assets/favicon.png">
 
 
-    <!-- ================================
-         GOOGLE FONTS
-    ================================= -->
+    <!-- ================== GOOGLE FONTS ============= -->
 
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
@@ -48,17 +42,13 @@
           rel="stylesheet">
 
 
-    <!-- ================================
-         FONT AWESOME
-    ================================= -->
+    <!-- ================ FONT AWESOME ============== -->
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
-    <!-- ================================
-         CSS
-    ================================= -->
+    <!-- ================== CSS ============== -->
 
     <link rel="stylesheet"
           href="style.css">
@@ -97,17 +87,13 @@
 
 
 
-<!-- =========================================
-     SCROLL PROGRESS
-========================================= -->
+<!-- ==================== SCROLL PROGRESS ============= -->
 
 <div id="scrollProgress"></div>
 
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+<!-- =================== HEADER ================== -->
 
 <header id="header">
 
@@ -198,17 +184,13 @@
 
 
 
-<!-- =========================================
-     MAIN
-========================================= -->
+<!-- ================ MAIN ================ -->
 
 <main>
 
 
 
-<!-- =========================================
-     HERO SECTION
-========================================= -->
+<!-- ================ HERO SECTION =============== -->
 
 <section id="home"
          class="hero section">
@@ -805,9 +787,7 @@ and working with cross-functional teams to deliver quality software.
 
 
 
-<!-- =========================================
-     EXPERIENCE
-========================================= -->
+<!-- =================== EXPERIENCE ============== -->
 
 <section id="experience"
          class="section section-dark">
@@ -1170,9 +1150,7 @@ and working with cross-functional teams to deliver quality software.
 
 
 
-<!-- =========================================
-     SKILLS
-========================================= -->
+<!-- ========= SKILLS ========= -->
 
 <section id="skills"
          class="section">
@@ -1355,9 +1333,7 @@ and working with cross-functional teams to deliver quality software.
 
 
 
-<!-- =========================================
-     TOOLS
-========================================= -->
+<!-- ============== TOOLS ============== -->
 
 <section class="section section-dark">
 
@@ -1512,9 +1488,7 @@ and working with cross-functional teams to deliver quality software.
 
 
 
-<!-- =========================================
-     PROJECTS
-========================================= -->
+<!-- ================ PROJECTS =============== -->
 
 <section id="projects"
          class="section">
@@ -2022,9 +1996,7 @@ systems internally.
 
 
 
-<!-- =========================================
-     ACHIEVEMENTS
-========================================= -->
+<!-- ============== ACHIEVEMENTS ============== -->
 
 <section class="section section-dark">
 
@@ -2106,9 +2078,7 @@ systems internally.
 
 
 
-<!-- =========================================
-     CERTIFICATIONS
-========================================= -->
+<!-- ============ CERTIFICATIONS ============= -->
 
 <section class="section">
 
@@ -2521,9 +2491,7 @@ systems internally.
 
 
 
-<!-- =========================================
-     FOOTER
-========================================= -->
+<!-- ============ FOOTER ========== -->
 
 <footer>
 
@@ -2577,11 +2545,95 @@ systems internally.
 
 </button>
 
+<!-- ================= CHATBOT ================= -->
+
+<div class="chatbot-container">
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-toggle" class="chatbot-toggle">
+        💬
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chatbot" class="chatbot">
+
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div>
+                <h3>QA Portfolio Assistant</h3>
+                <span>● Online</span>
+            </div>
+
+            <button id="close-chatbot" class="close-chatbot">
+                ✕
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="chat-messages">
+
+            <div class="message bot-message">
+                👋 Hello! I'm Kalpesh's Portfolio Assistant.
+                <br><br>
+                You can ask me about:
+                <br>
+                • Experience
+                <br>
+                • Skills
+                <br>
+                • Projects
+                <br>
+                • Education
+                <br>
+                • Certifications
+                <br>
+                • Contact information
+            </div>
+
+        </div>
+
+        <!-- Suggested Questions -->
+        <div class="suggested-questions">
+
+            <button onclick="askQuestion('Tell me about Kalpesh')">
+                About
+            </button>
+
+            <button onclick="askQuestion('What are your skills?')">
+                Skills
+            </button>
+
+            <button onclick="askQuestion('Tell me about your experience')">
+                Experience
+            </button>
+
+            <button onclick="askQuestion('Show me your projects')">
+                Projects
+            </button>
+
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-container">
+
+            <input
+                type="text"
+                id="user-input"
+                placeholder="Ask me something..."
+            >
+
+            <button id="send-button">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
+<!-- ========= JAVASCRIPT ============ -->
 
 <script src="script.js"></script>
 
